@@ -50,6 +50,7 @@ namespace Game10003
             readonly get => a;
             set => a = ConstrainAsByte(value);
         }
+        public static object FillColor { get; internal set; }
 
         #endregion
 
