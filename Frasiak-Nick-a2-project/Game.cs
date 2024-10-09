@@ -199,6 +199,7 @@ namespace Game10003
             Draw.FillColor = skyColor;
             Draw.LineColor = Color.Clear;
             Draw.Circle(shadowxOffset, 120, 60);
+            
             //Draw.FillColor = moonColors[1];
 
 
