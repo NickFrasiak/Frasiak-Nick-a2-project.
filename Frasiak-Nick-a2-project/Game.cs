@@ -110,12 +110,7 @@ namespace Game10003
                 }
             }
         }
-
-
-
-
         //stars
-
         void DrawStars()
         {
             Draw.FillColor = Color.White;
@@ -143,6 +138,8 @@ namespace Game10003
                 Draw.FillColor = buildingColor;
                 Draw.Rectangle(160, 260, 80, 260);
 
+                //Building point
+                Draw.Triangle(160, 260, 240, 260, 200, 210);
             }
         }
 
@@ -200,12 +197,7 @@ namespace Game10003
             Draw.LineColor = Color.Clear;
             Draw.Circle(shadowxOffset, 120, 60);
             
-            //Draw.FillColor = moonColors[1];
-
-
-            //Cresent moon effect
-
-            //Draw.Circle(180, 120, 60);
+            
 
         }
     }
