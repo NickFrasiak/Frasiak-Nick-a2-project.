@@ -182,7 +182,14 @@ namespace Game10003
             //Verticle window slatts
 
             //clock
-
+            Draw.FillColor = moonColorW;
+            Draw.Circle(200, 280, 10);
+            //Clock Hands - Clear line color before drawing moon
+            Draw.LineColor = Color.Black;
+            Draw.LineSize = 3;
+            Draw.Line(200, 280, 205, 285);
+            Draw.Line(200, 280, 195, 270);
+            Draw.LineColor = Color.Clear;
 
 
             //Moon!
