@@ -1,6 +1,8 @@
 ﻿// Include code libraries you need below (use the namespace).
+using Raylib_cs;
 using System;
 using System.Numerics;
+using System.Reflection;
 
 // The namespace your code is in.
 namespace Game10003
@@ -168,15 +170,34 @@ namespace Game10003
                 }
 
             }
-
             //Center Building Lights
             Draw.FillColor = buildingLightColor;
             Draw.Rectangle(170, 300, 60, 300);
 
-            //Center building window slatts
+            //Horizontal window slatts
+            Draw.FillColor = buildingColor;
+            Draw.Rectangle(170, 300, 60, 5);
+            Draw.Rectangle(170, 310, 60, 5);
+            Draw.Rectangle(170, 320, 60, 5);
+            Draw.Rectangle(170, 330, 60, 5);
+            Draw.Rectangle(170, 340, 60, 5);
+            Draw.Rectangle(170, 350, 60, 5);
+            Draw.Rectangle(170, 360, 60, 5);
+            Draw.Rectangle(170, 370, 60, 5);
+            Draw.Rectangle(170, 380, 60, 5);
+            Draw.Rectangle(170, 390, 60, 10);
 
 
             //Verticle window slatts
+
+            Draw.Rectangle(190, 300, 5, 300);
+            Draw.Rectangle(170, 300, 5, 300);
+            Draw.Rectangle(180, 300, 5, 300);
+            Draw.Rectangle(200, 300, 5, 300);
+            Draw.Rectangle(210, 300, 5, 300);
+            Draw.Rectangle(220, 300, 5, 300);
+            Draw.Rectangle(230, 300, 5, 300);
+            Draw.Rectangle(240, 300, 5, 300);
 
             //clock
             Draw.FillColor = moonColorW;
@@ -188,7 +209,6 @@ namespace Game10003
             Draw.Line(200, 280, 195, 270);
             Draw.LineColor = Color.Clear;
 
-
             //Moon!
             Draw.FillColor = moonColors[currentMoonColorIndex];
             Draw.Circle(200, 120, 60);
@@ -196,9 +216,6 @@ namespace Game10003
             Draw.FillColor = skyColor;
             Draw.LineColor = Color.Clear;
             Draw.Circle(shadowxOffset, 120, 60);
-            
-            
-
         }
     }
 
