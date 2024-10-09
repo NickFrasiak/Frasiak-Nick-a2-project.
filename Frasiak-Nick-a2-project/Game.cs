@@ -12,8 +12,6 @@ namespace Game10003
     /// </summary>
     public class Game
     {
-        // Place your variables here:
-
         //colors
         Color skyColor = new Color(0x4d, 0x4d, 0x80);
         Color moonColourY1 = new Color(0Xff, 0Xf4, 0X4a);
@@ -23,10 +21,11 @@ namespace Game10003
         Color moonColorB3 = new Color(0x30, 0x32, 0x4d);
         Color moonColorW = new Color(0Xff, 0Xf9, 0xf0);
         Color moonColorP = new Color(0x62, 0x1c, 0x80);
-        //Array for moon colors to randomize 
-        Color[] moonColors;
         Color buildingColor = new Color(0X84, 0X78, 0x75);
         Color buildingLightColor = new Color(0xff, 0xf4, 0x4a);
+        
+        //Array for moon colors to randomize 
+        Color[] moonColors;
 
         //Star coords
         float[] xstarCoords = [];
@@ -35,7 +34,6 @@ namespace Game10003
 
         //Moon Shadow
         int shadowxOffset = 180;
-
 
         //Current moon color index
         int currentMoonColorIndex = 0;
@@ -46,10 +44,7 @@ namespace Game10003
 
         //Window coords
         float[][] windowCoords = [[10, 230], [50, 210], [90, 290], [130, 310], [170, 300], [250, 310], [290, 290], [330, 210], [370, 230]];
-
-
-
-
+        
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -84,9 +79,7 @@ namespace Game10003
             Draw.FillColor = buildingLightColor;
 
             DrawBuildings();
-
             DrawWindows();
-
 
             //If spacebar is pressed, Change moon color and change moon shadow offset
             if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
@@ -96,16 +89,12 @@ namespace Game10003
                     currentMoonColorIndex++;
                     shadowxOffset = Random.Integer(70, 210);
 
-
-
                     if (currentMoonColorIndex >= 6)
                     {
                         currentMoonColorIndex = 0;
                     }
-
                     wasSpacePressed = true;
                 }
-
                 else
                 {
                     wasSpacePressed = false;
@@ -129,26 +118,21 @@ namespace Game10003
 
             for (int index = 0; index < buildingCoords.Length; index++)
             {
-
                 if (index != 4)
                 {
                     Draw.Rectangle(buildingCoords[index][0], buildingCoords[index][1], 40, 200);
 
                 }
-
                 //Center Building
                 Draw.FillColor = buildingColor;
                 Draw.Rectangle(160, 260, 80, 260);
-
                 //Building point
                 Draw.Triangle(160, 260, 240, 260, 200, 210);
             }
         }
-
         //Loop for windows
         void DrawWindows()
         {
-
             for (int index = 0; index < windowCoords.Length; index++)
             {
                 Draw.FillColor = buildingLightColor;
@@ -165,10 +149,7 @@ namespace Game10003
                     {
                         Draw.Rectangle(windowCoords[index][0] + i * 6, windowCoords[index][1], 2, 300);
                     }
-
-
                 }
-
             }
             //Center Building Lights
             Draw.FillColor = buildingLightColor;
@@ -187,9 +168,7 @@ namespace Game10003
             Draw.Rectangle(170, 380, 60, 5);
             Draw.Rectangle(170, 390, 60, 10);
 
-
             //Verticle window slatts
-
             Draw.Rectangle(190, 300, 5, 300);
             Draw.Rectangle(170, 300, 5, 300);
             Draw.Rectangle(180, 300, 5, 300);
@@ -202,6 +181,7 @@ namespace Game10003
             //clock
             Draw.FillColor = moonColorW;
             Draw.Circle(200, 280, 10);
+            
             //Clock Hands - Clear line color before drawing moon
             Draw.LineColor = Color.Black;
             Draw.LineSize = 3;
@@ -218,6 +198,4 @@ namespace Game10003
             Draw.Circle(shadowxOffset, 120, 60);
         }
     }
-
-
 }
