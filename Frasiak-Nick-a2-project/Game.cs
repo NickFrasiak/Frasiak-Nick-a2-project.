@@ -11,7 +11,7 @@ namespace Game10003
     public class Game
     {
         // Place your variables here:
-        
+
         //colors
         Color skyColor = new Color(0x4d, 0x4d, 0x80);
         Color moonColourY1 = new Color(0Xff, 0Xf4, 0X4a);
@@ -26,22 +26,27 @@ namespace Game10003
         Color buildingColor = new Color(0X84, 0X78, 0x75);
         Color buildingLightColor = new Color(0xff, 0xf4, 0x4a);
 
+        //Star coords
+        float[] xstarCoords = [];
+        float[] ystarCoords = [];
+        float starRadius = 2;
+
+        //Moon Shadow
         int shadowxOffset = 180;
+
 
         //Current moon color index
         int currentMoonColorIndex = 0;
         bool wasSpacePressed = false;
-       
 
         //Building coords
-        float[][] buildingCoords = [[0, 220],[40 , 200], [80, 280],[120, 300], [160, 260], [240, 300], [280, 280], [320, 200], [360,220]];
+        float[][] buildingCoords = [[0, 220], [40, 200], [80, 280], [120, 300], [160, 260], [240, 300], [280, 280], [320, 200], [360, 220]];
 
         //Window coords
-        float[][] windowCoords = [[10, 230],[50, 210],[90, 290],[130, 310], [170, 300], [250, 310], [290, 290], [330, 210],[370,230]];
+        float[][] windowCoords = [[10, 230], [50, 210], [90, 290], [130, 310], [170, 300], [250, 310], [290, 290], [330, 210], [370, 230]];
 
-        //Star coords
 
-        
+
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -52,6 +57,15 @@ namespace Game10003
             Window.SetSize(400, 400);
 
             moonColors = [moonColourY1, moonColorY2, moonColorB1, moonColorB2, moonColorB3, moonColorW, moonColorP];
+
+            int count = 55;
+            xstarCoords = new float[count];
+            ystarCoords = new float[count];
+            for (int i = 0; i < count; i++)
+            {
+                xstarCoords[i] = Random.Integer(10, 390);
+                ystarCoords[i] = Random.Integer(10, 250);
+            }
         }
 
         /// <summary>
@@ -60,14 +74,15 @@ namespace Game10003
         public void Update()
         {
             Window.ClearBackground(skyColor);
-            
+            DrawStars();
+
             //building color
-           Draw.FillColor = buildingColor;
+            Draw.FillColor = buildingColor;
             //Window color
             Draw.FillColor = buildingLightColor;
-           
+
             DrawBuildings();
-            
+
             DrawWindows();
 
 
@@ -94,63 +109,63 @@ namespace Game10003
                     wasSpacePressed = false;
                 }
             }
-            {
-                // If it is, make shape colors green
-                Draw.FillColor = Color.Green;
-            }
-
-
         }
-        
-        
-        
-        
-        
-        
+
+
+
+
+        //stars
+
+        void DrawStars()
+        {
+            Draw.FillColor = Color.White;
+            for (int i = 0; i < xstarCoords.Length; i++)
+            {
+                Draw.Circle(xstarCoords[i], ystarCoords[i], starRadius);
+            }
+        }
+
         //Loop for buildings
         void DrawBuildings()
         {
             Draw.FillColor = buildingColor;
-           
+
             for (int index = 0; index < buildingCoords.Length; index++)
             {
 
-                if (index != 4 )
+                if (index != 4)
                 {
                     Draw.Rectangle(buildingCoords[index][0], buildingCoords[index][1], 40, 200);
-                    
+
                 }
-                
+
                 //Center Building
                 Draw.FillColor = buildingColor;
                 Draw.Rectangle(160, 260, 80, 260);
 
-
-
             }
-
         }
 
         //Loop for windows
         void DrawWindows()
         {
-           
-            for (int index = 0;index < windowCoords.Length; index++)
+
+            for (int index = 0; index < windowCoords.Length; index++)
             {
                 Draw.FillColor = buildingLightColor;
-                Draw.Rectangle(windowCoords[index][0], windowCoords[index][1], 20,210);
+                Draw.Rectangle(windowCoords[index][0], windowCoords[index][1], 20, 210);
 
                 //Draw 20 rectangles to make window slatts
                 for (int i = 0; i < 20; i++)
                 {
                     Draw.FillColor = buildingColor;
                     Draw.Rectangle(windowCoords[index][0], windowCoords[index][1] + i * 20, 20, 10);
-                    
+
                     //Draw Vertical window slatts 
-                    if (i < 4) 
+                    if (i < 4)
                     {
-                        Draw.Rectangle(windowCoords[index][0] + i * 6, windowCoords[index][1] , 2, 300);
-                    } 
+                        Draw.Rectangle(windowCoords[index][0] + i * 6, windowCoords[index][1], 2, 300);
+                    }
 
 
                 }
@@ -158,8 +173,16 @@ namespace Game10003
             }
 
             //Center Building Lights
-            Draw.FillColor= buildingLightColor;
+            Draw.FillColor = buildingLightColor;
             Draw.Rectangle(170, 300, 60, 300);
+
+            //Center building window slatts
+
+
+            //Verticle window slatts
+
+            //clock
+
 
 
             //Moon!
